@@ -110,7 +110,37 @@
 
 
 \begin{itemize}
-\item[\textbf{P1.}] 
-\end{itemize}
+\item[\textbf{P1.}] Considere el siguiente juego de 2 jugadores. El jugador 1 elige un número $x_1\in [1,10]$. Luego el jugador 2 elige un número entre $x_1+1$ y $x_1+10$. El jugador 1 observa este número y elige un número $x_2$ entre $y_1+1$ e $y_1+10$ y así sucesivamente, en cada turno uno de los jugadores adiciona una catidad en $[1,10]$. El ganador es el primero que declara el número 100, quien recibe $\$ 100$ y el perdedor no recibe nada. Encuentre el EPS de este juego. ¿Quién gana?
 
+\item[\textbf{P2.}] Probaremos en este problema la siguiente versión del teorema de existencia de equilibrio que es levemente más fuerte.
+\begin{teo}
+Consideremos un juego con espacios de estrategias $S_i\subseteq \R^{d_i}$
+convexos compactos y funciones de pago $u_i:\prod_{i=1}^n \rightarrow \R$ continuas y tales que $x_i\mapsto u_i(x_i,s_{-i})$ es cuasicóncava, es decir los conjuntos de nivel $\{ x_i\in S_i: u_i(x_i,s_{-i})\geq \lambda\}$ son convexos. Entonces existe un equilibrio de Nash.
+\end{teo}
+Para ello
+\begin{enumerate}
+    \item Considere una función $M:C\rightarrow 2^C$, con $C$ convexo compacto, $M(x)$ convexo cerrado y no vacío para todo $x\in C$. Suponga que además para todo$x\in C$ y $\varepsilon>0$ existe $\delta>0$ tal que
+    \[
+    \norm{ x'-x}<\delta \Rightarrow M(x')\subseteq M(x) + B(0,\varepsilon).
+    \]
+    Pruebe que existe una función $\Phi:C\rightarrow C$ continua tal que $d((x,\Phi(x)),M)\leq \varepsilon$ para todo $x\in C$.
+    \item Pruebe que $M$ tiene un punto fijo, es decir, $x^* \in M(x^*)$.
+    \item Concluya el teorema.
+\end{enumerate}
+
+\item[\textbf{P3.}] Considere el juego con 3 jugadores siguiente con pagos dados por la figura, donde el jugador 1 elige una fila, el jugador 2 elige una columna y el tercero elige una de las 3 tablas.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{Tablas.png}
+    \label{fig:my_label}
+\end{figure}
+\begin{enumerate}
+    \item Encuentre equilibrios en estrategias puras con pagos $(1,0,0), (0,1,0)$ y $(0,0,0)$.
+    \item Encuentre un equilibrio correlacionado donde los jugadores 1 y 2 juegan $(T,L)$ y $(B,R)$ con igual probabilidad.
+    \item Suponga que el jugador 3 no es estratégico y siempre juega $B$, por lo que en el juego participan solamente los jugadores 1 y 2. Encuentre todos los equilibrios de Nash (puros y mixtos).
+\end{enumerate}
+
+
+
+\end{itemize}
 \end{document} 
