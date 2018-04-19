@@ -1,0 +1,142 @@
+\documentclass[11pt, spanish]{article}
+\pagestyle{empty}
+
+%acentos de la forma � en vez de \'a
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+%Enumeración con columnas que se usa con \begin{multicols}{2} \begin{enumerate}
+\usepackage{multicol}
+\usepackage{multirow}
+
+
+%Para poder usar begin comment
+\usepackage{verbatim}
+
+%Teoremas
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+
+
+%letras para enumerar
+\makeatletter\renewcommand\theenumi{\@alph\c@enumi}\makeatother\renewcommand\labelenumi{\theenumi)}
+
+%m�rgenes
+\usepackage[left=2cm, top=2cm, right=2cm, headheight=13.6pt]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumerate}
+
+%conjuntos N, Q, R, Z, C
+\usepackage{dsfont}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Pol}{\mathcal{P}}
+
+%Transformada de Laplace
+\renewcommand{\L}{\mathcal{L}}
+
+%Probabilidades
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Var}{\mathbb{V}\text{ar}}
+
+%l�gica
+\newcommand{\ssi}{\Leftrightarrow}
+
+%funciones
+\newcommand{\function}[5]{  \begin{array}{rl}
+                                #1: #2 &\longrightarrow #3 \\
+                                #4 & \longmapsto #1\left(#4\right)= #5
+                            \end{array} }
+
+\newcommand{\funcion}[3]{#1: #2 \longrightarrow #3 }
+\newcommand{\parteentera}[1]{[#1]}
+
+%%%operadores matematicos
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\tr}{\text{tr}}
+
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+% % % % % % % % % %
+%\providecommand{\abs}[1]{\lvert#1 \rvert}
+%\providecommand{\norm}[1]{\lVert#1 \rVert}
+%\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm, amsfonts}
+
+%Im�genes
+\usepackage{graphicx}
+\usepackage{float}
+\begin{document}
+\fancyhead[L]{Facultad de Ciencias Físicas y Matemáticas}
+\fancyhead[R]{Universidad de Chile}
+
+\begin{flushleft}
+  \textbf{IN6228 - Teor\'ia de Juegos}
+  \\\textbf{Profesor:} Jos\'e Correa.
+  \\\textbf{Auxiliares:} Carlos Bonet, Andr\'es Cristi.
+\end{flushleft}
+
+
+\begin{center}
+  \Large{\textbf{Tarea 1}}
+\end{center}
+
+%\begin{flushleft}
+
+
+
+\begin{itemize}
+  \item[\textbf{P1.}] Los jugadores 1 y 2 participan en un juego de suma-cero con matrices de pago $A^{1,2}$ y $A^{2,1}$; al mismo tiempo los jugadores 1 y 3 desarrollan otro juego de suma-cero con matrices de pago $A^{1,3}$ y $A^{3,1}$. En vez de ocupar diferentes estrategias en ambos juegos, el jugador 1 debe ocupar la misma estrategia en los dos juegos.
+  \begin{enumerate}
+    \item Muestre que existe un equilibrio de nash en este juego.
+    \item De un algoritmo que permita calcular el equilibrio de nash. Comente sobre la eficiencia de su algoritmo propuesto.
+  \end{enumerate}
+
+  \item[\textbf{P2.}] Encuentre todos los equilibrios del juego matricial usando el algoritmo de Lemke-Howson:
+
+     \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+          \hline
+            &L & C & R\\
+          \hline\hline
+          T&3,4& 5,3 & 2,3\\
+          M& 2,5& 3,9& 4,6\\
+          B& 3,1 & 2,5& 7,4\\
+          \hline
+      \end{tabular}
+      \end{center}
+
+  \item[\textbf{P3.}] Una jerarquizada manada de $n$ leones encuentran una presa. Si el le\'on 1 decide no comerse a la presa, \'esta escapa y el juego se acaba. Pero si el le\'on 1 se come a la presa, entonces \'el se pone gordo y lento, con esto el le\'on 2 se lo puede comer. Si el le\'on 2 no se come al le\'on 1 entonces el juego termina; sino el le\'on 3 puede comerse al 2 y as\'i sucesivamente se realiza el juego. Suponga que las preferencias de todos los leones son tales que prefieren comer antes de estar sin comida y no comer antes de ser asesinados. Modele el juego de manera extensiva y encuentre todos los EPS del juego.
+
+  \item[\textbf{P4.}] Dos rutas $A$ y $B$ conectan un cierto par 
+  origen-destino, con tiempos de viaje que dependen del número de
+  usuarios en cada ruta,
+  
+
+\end{itemize}
+
+\end{document} 
