@@ -132,9 +132,65 @@
 
   \item[\textbf{P3.}] Una jerarquizada manada de $n$ leones encuentran una presa. Si el le\'on 1 decide no comerse a la presa, \'esta escapa y el juego se acaba. Pero si el le\'on 1 se come a la presa, entonces \'el se pone gordo y lento, con esto el le\'on 2 se lo puede comer. Si el le\'on 2 no se come al le\'on 1 entonces el juego termina; sino el le\'on 3 puede comerse al 2 y as\'i sucesivamente se realiza el juego. Suponga que las preferencias de todos los leones son tales que prefieren comer antes de estar sin comida y no comer antes de ser asesinados. Modele el juego de manera extensiva y encuentre todos los EPS del juego.
 
-  \item[\textbf{P4.}] Dos rutas $A$ y $B$ conectan un cierto par 
+  \item[\textbf{P4.}] 
+    Dos rutas $A$ y $B$ conectan un cierto par 
   origen-destino, con tiempos de viaje que dependen del número de
   usuarios en cada ruta,
+
+  \begin{align*}
+    c_A(n_A) & = 1.2n_A - 0.4\\
+    c_B(n_B) & = 0.8n_B + 0.4
+  \end{align*}
+
+  Consideremos dos jugadores los cuales deben escoger una ruta, de
+  modo que sus conjuntos de estrategias son $S_1=S_2=\{A,B\}$.
+  \begin{enumerate}
+    \item Explicite la matriz de pagos del juego y determine todos
+      los equilibrios de Nash.
+    \item Encuentre el poliedro $P$ de los equilibrios correlacionados
+      y verifique que todos los equilibrios encontrados en la parte
+      anterior están en $P$.
+    \item Si usted fuera árbitro de este juego, qu\'e equilibrio
+      correlacionado escogería y justifique el porqu\'e.
+    \item Consideremos un caso similar al anterior pero con $n$
+      jugadores, los cuales escogen una ruta $r\in R=\{1,\dots,m\}$.
+      El costo de la ruta $r$ es una función creciente $c_r(n_r)$ de
+      la cantidad total $n_r$ de usuarios que eligen dicha ruta. Sea
+      $s=(s_1,\dots,s_n)\in R^n$ un perfil de estrategias y definamos
+      \begin{align*}
+	U(s)= \sum_{r=1}^m \sum_{u=1}^{n_r} c_r(u)
+      \end{align*}
+      donde $n_r=|\{ s_i=r\}|$ es el número de usuarios que escogen
+      la ruta $r$. Sea $s^*$ una solución óptima de $\min_{s\in R^n}
+      U(s)$. Pruebe que $s^*$ es un equilibrio de Nash en estrategias
+      puras.
+  \end{enumerate}
+
+\item[\textbf{P5.}]
+  Un juego $\langle I, (S_i)_{i\in I}, (u_i)_{i\in I} \rangle$ se
+  dice sim\'etrico si $S_i =S$ para todo $i\in I$ y $u_i(s_i,s_{-i})=
+  u_j(s_j,s_{-j})$ para todo $i,j\in I$ cuando $s_i=s_j$ y $s_{-i}=s_{-j}$.
+  A su vez, diremos que una estrategia $\sigma\in (\Delta S)^{I}$ es
+  sim\'etrica cuando $\sigma_i= \sigma_j$ para todo par $i,j\in I$.
+
+  \begin{enumerate}
+    \item Para un juego sim\'etrico ¿Se tiene existencia de EN en
+      estrategias puras? ¿Todo juego sim\'etrico admite un potencial?
+      Demuestre o entregue contraejemplos.
+    \item Para el caso de un juego sim\'etrico con $|S|\leq 2$,
+      encuentre un EN puro mediante un algoritmo polinomial. Para
+      este caso ¿se tiene existencia de EN puro y sim\'etrico?
+      Demuestre o entregue un contraejemplo.
+    \item Ahora probaremos la existencia de un EN sim\'etrico en
+      el caso general. Para ello, considere para $i\in I, s\in S$ y
+      $\sigma \in \Delta S$ las funciones
+      \begin{align*}
+	g_s(\sigma) & =  \max \big\{0, u_i(s,\sigma_{-i} -  \big\}, \text{ con } \sigma_{-i}=(\sigma,\dots,\sigma)\\
+	y_s(\sigma) & = \frac{\sigma_s+g_s(\sigma)}{1+ \sum_{t\in S} g_t(\sigma)}
+      \end{align*}
+      Estudie los puntos fijos de $T(\sigma)= \big( y_s(\sigma)\big)_{s\in S}$ y concluya la existencia de
+      un EN sim\'etrico.
+  \end{enumerate}
   
 
 \end{itemize}
