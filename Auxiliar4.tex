@@ -111,10 +111,55 @@
 
 \begin{itemize}
 \item[\textbf{P1.}] 
+	\begin{enumerate}
+		\item Recuerde el juego de Cournot de $n$ firmas, donde cada una
+			escoge una cantidad $s_i$ a producir y sus pagos son
+			\begin{align*}
+				p_i(s)= s_i \left( a- b\sum_{j=1}^n s_j \right) -c_i s_i
+			\end{align*}
+			con $c_i$ el costo de producción. Encuentre un potencial y con \'el 
+			encuentre un EN en el caso $c_i=c, \forall i$.
+		\item Muestre que el siguiente juego no admite potencial
+			\[
+				\left( \begin{matrix} 2,2 & 0,3 \\ 3,0 & 1,2 \end{matrix}\right)
+			\]
+		\item Suponga que el jugador de las filas juega primero y desp\'es el de las columnas.
+			Cuál es el EPS?
+		\item En el juego anterior, suponga que un mediador propone con probabilidad
+			$1/2$ TL y con probabilidad $1/2$ BR. Es esto un equilibrio
+			correlacionado? Muestre que existe un único equilibrio correlacionado.
 
-\item[\textbf{P2.}] 
+	\end{enumerate}
 
-\item[\textbf{P3.}] 
+\item[\textbf{P2.}] Un conjunto de $m$ máquinas id\'enticas son compartidas por $n$
+	agentes, cada uno de los cuales quiere procesar su tarea. La tarea del
+	agente $j$ demora un tiempo $p_j$ en ser procesada y quiere que est\'e
+	terminada lo antes posible. Para ello, cada agente elige una de las máquinas
+	y las máquinas procesan los trabajos que recibieron según la regla de Smith,
+	es decir, en orden creciente de tamaño. Probaremos que el PoA de este juego
+	es finito, al tomar como costo social $\sum_j c_j$, con $c_j$ el tiempo
+	de completación de la tarea $j$.
+	\begin{enumerate}
+		\item Explique por qu\'e se puede suponer que todos los $p_j$ son
+			distintos.
+		\item Pruebe que siempre existe EN en estrategias puras.
+		\item Sea $J_i$ el conjunto de tareas que recibe la máquina $i$.
+			Pruebe que en el equilibrio la tarea $j$ es procesada
+			en una máquina $i$ que minimiza 
+			\begin{align*}
+				\sum_{k\in J_i: p_k\leq p_j} p_k.
+			\end{align*}
+		\item Imagine que tiene una máquina que es $m$ veces más rápida
+			que las máquinas originales y llame OPTF al valor 
+			óptimo en ella. Pruebe que el costo social de un equilibrio
+			EQ es a lo más OPTF $+ \sum_j p_j$.
+		\item Llamemos OPT al costo social de la asignación óptima en 
+			las $m$ máquinas. Pruebe que OPTF $\leq$ OPT.
+		\item Concluya que el PoA es a lo más 2.
+	\end{enumerate}
+
+
+	
 
 \end{itemize}
 \end{document} 
