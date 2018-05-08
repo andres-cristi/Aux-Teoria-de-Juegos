@@ -1,0 +1,240 @@
+\documentclass[11pt, spanish]{article}
+\pagestyle{empty}
+
+%acentos de la forma � en vez de \'a
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+%Enumeración con columnas que se usa con \begin{multicols}{2} \begin{enumerate}
+\usepackage{multicol}
+\usepackage{multirow}
+
+
+%Para poder usar begin comment
+\usepackage{verbatim}
+
+%Teoremas
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+
+
+%letras para enumerar
+\makeatletter\renewcommand\theenumi{\@alph\c@enumi}\makeatother\renewcommand\labelenumi{\theenumi)}
+
+%m�rgenes
+\usepackage[left=2cm,top=2cm,right=2cm]{geometry}
+
+
+\usepackage{enumerate}
+
+%conjuntos N, Q, R, Z, C
+\usepackage{dsfont}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Pol}{\mathcal{P}}
+
+%Transformada de Laplace
+\renewcommand{\L}{\mathcal{L}}
+
+%Probabilidades
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Var}{\mathbb{V}\text{ar}}
+
+%l�gica
+\newcommand{\ssi}{\Leftrightarrow}
+
+%funciones
+\newcommand{\function}[5]{  \begin{array}{rl}
+                                #1: #2 &\longrightarrow #3 \\
+                                #4 & \longmapsto #1\left(#4\right)= #5
+                            \end{array} }
+
+\newcommand{\funcion}[3]{#1: #2 \longrightarrow #3 }
+\newcommand{\parteentera}[1]{[#1]}
+
+%%%operadores matematicos
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\tr}{\text{tr}}
+
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+% % % % % % % % % %
+%\providecommand{\abs}[1]{\lvert#1 \rvert}
+%\providecommand{\norm}[1]{\lVert#1 \rVert}
+%\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm, amsfonts}
+
+
+%Grafos
+
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usetikzlibrary{arrows}
+\usetikzlibrary{babel}
+
+
+%Im�genes
+\usepackage{graphicx}
+\usepackage{float}
+\begin{document}
+
+\begin{flushleft}
+  \textbf{IN6228-1 Teoría de Juegos 2018}
+  \\\textbf{Profesor:} José Correa.
+  \\\textbf{Auxiliares:} Carlos Bonet y Andrés Cristi.
+\end{flushleft}
+
+
+\begin{center}
+  \large{\textbf{Control 1\\ 27 de Abril de 2018}}
+\end{center}
+
+%\begin{flushleft}
+
+
+
+\begin{itemize}
+  \item[\textbf{P1.}] Considere el juego definido por la matriz de pagos presentada a continuaci\'on y responda. 
+  \begin{center}
+  \begin{tabular}{c|c|c|c|c}
+                   &A & B & C & D\\
+      \hline
+       W& 4,5 & 5,4 & -1,4& 0,0\\
+       X& 0,0 & 4,5 & 2,-2& 5,4\\
+       Y& 2,2 & 4,3 & 5,1& -1,-1\\
+       Z& 5,4 & 0,0 & 3,2& 4,5\\
+
+  \end{tabular}
+  \end{center}
+
+  \begin{enumerate}
+    \item Realice una eliminaci\'on iterativa de estrategias estrictamente dominadas. Encuentre todos los equilibrios de Nash del juego.
+
+    Considere de ahora en adelante el juego reducido.
+    \item Haga dos iteraciones del algoritmo de Lemke-Howson partiendo de $k_0 = 0$ y verifique si encuentra un equilibrio de Nash.
+    \item Asuma que el juego es secuencial, comenzado el jugador asociado a las filas. Encuentre los EPS del juego.
+    \item Calcule un equilibrio correlacionado en el que el pago de ambos jugadores es estrictamente mayor que en cualquier equilibrio de Nash.
+    % \item Encuentre el equilibrio correlacionado que maximiza el pago esperado del jugador asociado a las filas.
+  \end{enumerate}
+
+\item[\textbf{P2.}] \textbf{Hotelling Game}
+
+  Dos cadenas de comida rápida quieren
+  instalar locales en una playa de creciente popularidad y deben decidir en
+  qu\'e lugar. Representamos la playa por el intervalo $[0,1]$ y las posiciones
+  de los locales como $x,y\in [0,1]$. Los potenciales clientes, que son
+  infinitesimalmente pequeños, se distribuyen
+  uniformemente en la playa y simplemente eligen la tienda más cercana. Si las
+  dos son igualmente cercanas, entonces una mitad va a una y la otra mitad a la
+  otra tienda. Cada cadena gana según la masa de clientes que capta.
+  Si entonces $x=1/3, y=1$, todos los clientes en $[0,\frac{2}{3})$
+  van a la cadena 1, la que tiene una ganancia de $2/3$ y los clientes en
+  $(\frac{2}{3},1]$ van a la cadena 2 que tiene una ganancia de $1/3$.
+
+  \begin{enumerate}
+    \item Escriba las funciones de utilidad de las cadenas y muestre que no
+      son continuas, por lo que no aplican los teoremas de existencia de equilibrio.
+    \item Pruebe que $(x,y)= (\frac{1}{2},\frac{1}{2})$ es un EN.
+    \item Pruebe que $(\frac{1}{2},\frac{1}{2})$ es el único equilibrio
+      en estrategias puras.
+    \item Pruebe que $(\frac{1}{2},\frac{1}{2})$ es el único equilibrio en
+      estrategias mixtas.
+    \item Pruebe que si en vez de dos hay tres cadenas que quieren poner una tienda
+      entonces no hay equilibrio en estrategias puras.
+  \end{enumerate}
+
+\newpage
+
+\item[\textbf{P3.}] \textbf{Juegos en Redes}
+
+  \begin{enumerate}
+    \item Consideremos un juego secuencial entre dos jugadores. En la
+      siguiente red ambos jugadores escogen un camino de $s$ a $t$,
+      uno despu\'es del otro.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=.65,->,shorten >=1pt,auto,node distance=2.5cm,
+  thick,main node/.style={circle,fill=blue!20,draw,minimum size=15pt},source node/.style={circle,fill=green!15,draw,minimum size=20pt},dest node/.style={circle,fill=red!20,draw,minimum size=15pt}]
+\node[source node] (source) at (-5,0) {$s$};
+\node[main node] (sourceB) at (-2,0) {};
+\node[main node] (up) at (0.5,1.5) {};;
+\node[main node] (down) at (0.5,-1.5) {};
+\node[dest node] (sink) at (3,0) {$t$};
+\draw (source) to node[below=2] {$1.01\cdot x$} (sourceB);
+\draw (source) to [bend left=60] node[above=2] {$2.03\cdot x$} (sourceB);
+\draw (source) to [bend right=80] node[above] {$4\cdot x$} (sink);
+\draw (sourceB) to node[above=2] {$x$} (up);
+\draw (sourceB) to node[above=2] {$0$}  (down);
+\draw (up) to node[above=2] {$0$}  (sink);
+\draw (up) to node[right] {$0$}  (down);
+\draw (down) to node[above=2] {$x$}  (sink);
+\end{tikzpicture}
+\end{figure}
+\vspace*{-.25in}
+
+Calcule el óptimo social, el equilibrio de Nash y el equilibrio perfecto en subjuegos.
+Compare los precios de la anarquía de ambos casos.
+
+\item Considere nuevamente un juego secuencial en que $n$ jugadoras quieren atravesar de $s$ a $t$
+  en un grafo de $m$ arcos paralelos. Cada jugadora debe elegir un arco $e$ y
+  su costo es una funci\'on creciente $c_e(x_e)$, con $x_e$ el número de jugadoras que eligen $e$. 
+  Probaremos que existe un EPS que corresponde a un equilibrio de Nash.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=.6,->,shorten >=1pt,auto,node distance=2.5cm,
+  thick,main node/.style={circle,fill=blue!20,draw,minimum size=15pt},source node/.style={circle,fill=green!15,draw,minimum size=20pt},dest node/.style={circle,fill=red!20,draw,minimum size=15pt}]
+\node[source node] (source) at (-4,0) {$s$};
+\node[dest node] (sink) at (4,0) {$t$};
+\node (puntos) at (0,1) {$\vdots$};
+\draw (source) to [bend left=80] (sink);
+\draw (source) to [bend left=60] (sink);
+\draw (source) to [bend left=40] (sink);
+\draw (source) to [bend left=10] (sink);
+\draw (source) to (sink);
+\end{tikzpicture}
+\end{figure}
+
+Para ello considere un EPS.
+\begin{enumerate}[i]
+  \item Pruebe que, dadas las acciones de las $n-1$ primeras jugadoras, la última jugadora elige una acci\'on en la que no tiene incentivo a desviarse (juega como si fuera Nash).
+  \item Procediendo por induccion, asuma que dadas las acciones de las primeras $k$ jugadoras, las \'ultimas $n-k$ escogen acciones tal que el perfil de estrategias es un equilibrio de Nash.
+   Pruebe que demostrar que la jugadora $k$ tampoco tiene incentivo a desviarse es equivalente a demostrar que la primera jugadora no tiene incentivo a desviarse cuando las \'ultimas $n-1$ escogen acciones cuyo perfil de estrategias es un equilibrio de Nash.
+  \item Por lo anterior falta demostrar que si las  \'ultimas $n-1$ jugadoras escogen acciones cuyo perfil de estrategias es un equilibrio de Nash entonces la primera tambi\'en lo hace. Para ello suponga que en el EPS la jugadora 1 juega la acci\'on $e$ y suponga adem\'as que alguna de las jugadoras restantes tambien juega $e$. Concluya que en este caso la jugadora 1 no tiene incentivo a desviarse.
+  \item Finalmente suponga que ninguna de las ultimas $n-1$ jugadoras escoge la acci\'on $e$ y por contradicion sea $f$ el arco al que la jugadora 1 tiene incentivo a desviarse . Sea $x_g$ la carga del arco $g$ cuando 1 juega $e$, y sea $y_g$ la carga del arco $g$ cuando $1$ juega $f$.  Considere el potencial de Rosenthal $\phi(z)=\sum_g\sum_{i=1}^{z_g} c_g(i)$. \textbf{BONUS:} Pruebe que el valor \'optimo (m\'inimo restringido a $\sum_g z_g=n$) de este potencial es \'unico. 
+  \item Use el potencial anterior para probar que $y_e=0$. Concluya que el costos para el jugador $1$ cuando juega la acci\'on $f$ es menor igual que cuando juega la acci\'on $e$, es decir, $c_f(y_f) \leq c_e(x_e)$ y concluya.
+  % \item Suponga que dadas las $k$ primeras jugadas, los últimos $n-k$ jugadores juegan un equilibrio de Nash.
+  %   Sea $e$ el arco que elige el jugador $k$ y suponga que no es equilibrio de Nash, es decir, que existe
+  %   un arco $g$ tal que $ f_e(x_e^{EQ}) > f_g(x_g^{EQ})$. Pruebe que si el jugador $k$ se cambia a $g$
+  %   entonces su costo disminuye.
+\end{enumerate}
+
+
+  \end{enumerate}
+
+\end{itemize}
+\end{document} 
