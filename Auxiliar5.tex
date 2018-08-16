@@ -1,0 +1,154 @@
+\documentclass[11pt, spanish]{article}
+\pagestyle{empty}
+
+%acentos de la forma � en vez de \'a
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+%Enumeración con columnas que se usa con \begin{multicols}{2} \begin{enumerate}
+\usepackage{multicol}
+\usepackage{multirow}
+
+
+%Para poder usar begin comment
+\usepackage{verbatim}
+
+%Teoremas
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+
+
+%letras para enumerar
+\makeatletter\renewcommand\theenumi{\@alph\c@enumi}\makeatother\renewcommand\labelenumi{\theenumi)}
+
+%m�rgenes
+\usepackage[left=2cm,top=2cm,right=2cm]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumerate}
+
+%conjuntos N, Q, R, Z, C
+\usepackage{dsfont}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Pol}{\mathcal{P}}
+
+%Transformada de Laplace
+\renewcommand{\L}{\mathcal{L}}
+
+%Probabilidades
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Var}{\mathbb{V}\text{ar}}
+
+%l�gica
+\newcommand{\ssi}{\Leftrightarrow}
+
+%funciones
+\newcommand{\function}[5]{  \begin{array}{rl}
+                                #1: #2 &\longrightarrow #3 \\
+                                #4 & \longmapsto #1\left(#4\right)= #5
+                            \end{array} }
+
+\newcommand{\funcion}[3]{#1: #2 \longrightarrow #3 }
+\newcommand{\parteentera}[1]{[#1]}
+
+%%%operadores matematicos
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\tr}{\text{tr}}
+
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+% % % % % % % % % %
+%\providecommand{\abs}[1]{\lvert#1 \rvert}
+%\providecommand{\norm}[1]{\lVert#1 \rVert}
+%\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm, amsfonts}
+
+%Im�genes
+\usepackage{graphicx}
+\usepackage{float}
+\begin{document}
+\fancyhead[L]{Facultad de Ciencias Físicas y Matemáticas}
+\fancyhead[R]{Universidad de Chile}
+
+\begin{flushleft}
+  \textbf{IN6228-1 Teoría de Juegos 2018}
+  \\\textbf{Profesor:} José Correa.
+  \\\textbf{Auxiliares:} Carlos Bonet y Andrés Cristi.
+\end{flushleft}
+
+
+\begin{center}
+  \large{\textbf{Clase Auxiliar 7\\ 16 de Agosto de 2018}}
+\end{center}
+
+%\begin{flushleft}
+
+
+
+\begin{itemize}
+\item[\textbf{P1.}] \textbf{Myerson.}
+\begin{enumerate}
+    \item Suponga que quiere subastar un item entre dos personas. Una la valora $v_1\sim$Uniforme$[0,1]$ y la otra
+    $v_2\sim$Uniforme$[0,100]$. ¿Cómo sería el remate que maximiza
+    la utilidad?
+    \item 
+\end{enumerate}
+
+
+
+\item[\textbf{P2.}] Encuentre el mecanismo óptimo para rematar
+un bien entre $n$ agentes con valoraciones i.i.d. en $[\alpha,\beta]$ bajo la restricción de que el bien siempre
+tiene que asignarse.
+
+\item[\textbf{P3.}] \textbf{Bulow-Kemperer.}
+
+Suponga que se encuentra en la siguiente situación: quiere
+rematar un bien entre $n+1$ agentes con valoraciones i.i.d.
+en un intervalo $[\alpha,\beta]$ (usted valora el bien en 0 y
+$0<\alpha$), pero uno de los agentes pone como condición para
+participar que no haya precio de reserva. ¿Qué será mejor,
+aceptar su condición o no?
+
+\item[\textbf{P4.}] \textbf{Remate casi óptimo}
+
+Volvamos al caso en que las distribuciones no son
+idénticamente distribuidas (sí regulares). Como el remate
+de Myerson es bastante complicado en este caso, considere
+el siguiente mecanismo:
+\begin{itemize}
+    \item Eliminar a todos los agentes con $c_i(v_i)<0$.
+    \item Hacer remate de segundo precio entre los que quedan,
+    con pago mínimo $c_i^{-1}(0)$.
+\end{itemize}
+Pruebe que este mecanismo alcanza al menos $1/2$ de la
+ganancia óptima.
+
+
+	
+
+\end{itemize}
+\end{document} 
