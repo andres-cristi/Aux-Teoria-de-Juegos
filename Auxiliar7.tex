@@ -110,41 +110,55 @@
 
 
 \begin{itemize}
-\item[\textbf{P1.}] \textbf{Myerson.}
+\item[\textbf{P1.}] \textbf{Myerson: Remates Óptimos}
 \begin{enumerate}
     \item Suponga que quiere subastar un item entre dos personas. Una la valora $v_1\sim$Uniforme$[0,1]$ y la otra
     $v_2\sim$Uniforme$[0,100]$. ¿Cómo sería el remate que maximiza
-    la utilidad?
-    \item 
+    la utilidad? ¿Se lleva el item el agente con mayor valoración?
+  \item Considere ahora que $v_1\sim$Uniforme$[0,2]$ y que $v_2$ sigue una distribución con la
+    siguiente densidad con soporte en $[0,2]$:
+    \begin{align}
+      f_2(x)= \begin{cases}
+	1 & \text{si } x\in \left[0, \frac{2}{3}\right) \\
+	  \frac{1}{4} & \text{si } x\in \left[ \frac{2}{3}, 2 \right]
+	\end{cases}
+    \end{align}
+    ¿Cómo sería el remate óptimo?
+
+    \textbf{Indicación:} Recuerde la fórmula $\int_0^q c(F^{-1})(\tau) d\tau = -(1-q)F^{-1}(q) + F^{-1}(0)$.
 \end{enumerate}
 
 
 
-\item[\textbf{P2.}] Encuentre el mecanismo óptimo para rematar
-un bien entre $n$ agentes con valoraciones i.i.d. en $[\alpha,\beta]$ bajo la restricción de que el bien siempre
+\item[\textbf{P2.}] \textbf{Óptimo restringido}
+
+  Use la caracterización de Myerson para encontrar
+  el mecanismo óptimo para rematar
+un bien entre $n$ agentes con valoraciones i.i.d. en $[\alpha,\beta]$, bajo la restricción de que el bien siempre
 tiene que asignarse.
 
-\item[\textbf{P3.}] \textbf{Bulow-Kemperer.}
+\item[\textbf{P3.}] \textbf{Bulow-Klemperer: Negociación vs. Remate}
 
 Suponga que se encuentra en la siguiente situación: quiere
 rematar un bien entre $n+1$ agentes con valoraciones i.i.d.
 en un intervalo $[\alpha,\beta]$ (usted valora el bien en 0 y
 $0<\alpha$), pero uno de los agentes pone como condición para
-participar que no haya precio de reserva. ¿Qué será mejor,
+participar que se haga un remate ascendente sin precio de reserva.
+¿Qué será mejor,
 aceptar su condición o no?
 
 \item[\textbf{P4.}] \textbf{Remate casi óptimo}
 
 Volvamos al caso en que las distribuciones no son
 idénticamente distribuidas (sí regulares). Como el remate
-de Myerson es bastante complicado en este caso, considere
+de Myerson puede ser bastante complicado en este caso, considere
 el siguiente mecanismo:
 \begin{itemize}
     \item Eliminar a todos los agentes con $c_i(v_i)<0$.
-    \item Hacer remate de segundo precio entre los que quedan,
-    con pago mínimo $c_i^{-1}(0)$.
+    \item Asignar el item al agente con mayor valoración entre los que quedan.
 \end{itemize}
-Pruebe que este mecanismo alcanza al menos $1/2$ de la
+Determine los pagos para que el mecanismo sea compatible en incentivos.
+Luego pruebe que este mecanismo alcanza al menos $1/2$ de la
 ganancia óptima.
 
 
