@@ -150,11 +150,86 @@ donde $c_i(v_i)= v_i - \frac{1-F_i(v_i)}{f_i(v_i)}$ es la valoración virtual de
 \end{enumerate}
 
 
-  \item[\textbf{P2.}] 
-
-  \item[\textbf{P3.}] 
+  \item[\textbf{P2.}] {\bf Elección Social}
   
-  \item[\textbf{P4.}] 
+Suponga que los candidatos en una elecci\'on se representan por
+elementos de $\R$, i.e.\ los candidatos son un conjunto finito $A
+\subseteq \R$. En esta elecci\'on cada votante $i\in N$ tiene un
+candidato favorito $p_i\in A$ y prefiere $p'\in A$ por sobre $p''\in
+A$ (denotado por $p' \succ_i p''$) si $p''<p'\le p_i$ o bien
+$p''>p'\ge p_i$ (si ninguna de estas condiciones se cumple entonces
+cualquier preferencia es posible).
+
+\begin{enumerate}
+\item Interprete esta condición. ¿Qué situación razonable de elección
+modela esto?
+\item Suponga que hay un número impar de votantes. Muestre que la
+mediana de los $\{p_i\}_{i \in {N}}$ es siempre un ganador de
+Condorcet.
+\item Considere el sistema que, dados los rankings de todos los
+votantes encuentra la mediana de los favoritos declarados de cada uno.
+Es efectivo que, independiente de lo que declaren el resto de los
+votantes, a un votante en particular no le conviene mentir en su
+ranking?
+\item Compare su respuesta con el resultado mostrado en auxiliar
+respecto al teorema de Gibbard-Satterthwaite.
+\item Considere la siguiente versión del sistema de \emph{approval
+voting}. El votante $i\in N$ vota por todos los candidatos $p\in A$
+tales que $|{p-p_i}| \le 1$. El sistema luego elige al candidato mas
+votado. Muestre un ejemplo en donde el \'unico ganador con este
+sistema no resulta ser ganador de Condorcet.
+\end{enumerate}
+
+  \item[\textbf{P3.}] Considere una empresa con 2 plantas, $A$ y $B$,
+que debe comprar 1 unidad de insumo para cada planta. Existen $n$
+proveedores, y el proveedor $i$ tiene un costo marginal de
+producci\'on $c_i$. Adem\'as, existe un costo de transporte (conocido)
+$d_{ij}$ por llevar una unidad de insumo del  proveedor $i$ a la
+planta $j$. \'Este costo lo paga la empresa.
+
+
+\begin{enumerate}
+\item Encuentre el mecanismo con Pivote de Clark que alcanza la
+eficiencia (en este caso, eficiencia corresponde a la minimizaci\'on
+de costo total).
+\item Ahora consideramos una empresa interesada en minimizar el costo
+total esperado a pagar. Para esto, suponga que el costo $c_i$ est\'a
+distribuido de acuerdo a $F_i$ en el intervalo
+$C=[\underline{c},\bar{c}]$. Un mecanismo estar\'a dado por funciones
+de asignaci\'on $x_{iA}:C^n\rightarrow \mathbb{R}$,
+$x_{iB}:C^n\rightarrow \mathbb{R}$ y $t:C^n\rightarrow \mathbb{R}^n$.
+    \begin{enumerate}
+
+    \item Escriba la funci\'on $U_i(c_i,c_i')$ que representa la
+utilidad del agente $i$ si su verdadero costo es $c_i$ pero declara un
+costo $c_i'$.
+
+    \item Escriba el problema de maximizaci\'on que debe resolver el principal
+
+    \item Demuestre que si un mecanismo es compatible en incentivos
+entonces 
+\[ R_i(c_i) := E_{c_{-i}}[x_{iA}(c_i,c_{-i})+x_{iB}(c_i,c_{-i})]
+\]
+es no-creciente en $c_i$ y
+$V_i(c_i)=V_i(\bar{c})-\int\limits_{c_i}^{\bar{c}}R_i(s)ds$.
+
+    \item Reescriba la funci\'on objetivo del principal de forma que
+sea s\'olo funci\'on de $x_{iA}$ y $x_{iB}$.
+
+    \item Encuentre el mecanismo \'optimo (puede asumir propiedades
+necesarias sobre $F_i$).
+
+    \end{enumerate}
+\end{enumerate}
+  
+  \item[\textbf{P4.}] Dos bienes indistinguibles serán rematados entre $n$ agentes cuya valoración por el bien sigue una distribución $F$ y son independientes. Cada agente desea obtener solo uno de los bienes, es decir, nunca se asigna dos veces al mismo comprador. En este contexto:
+ \begin{enumerate} 
+     \item Describa la asignación y los pagos de un mecanismo VCG.
+     \item Pruebe que sigue siendo válido el teorema de equivalencia de ingresos.
+     \item Asumiendo $F$ regular, encuentre la regla de asignación para un remate de Myerson.
+     \item Mecanismo de posted price: formule una expresión para encontrar el mejor precio fijo (el precio que maximiza la utilidad del martillero cuando su estrategia es cobrar el mismo precio a todos los clientes interesados).
+     \item Calcule el ingreso del martillero en las partes \textbf{a)}, \textbf{c)} y \textbf{d)} cuando $n=3$ y $F\sim U[0,1]$.
+\end{enumerate}
  
 
 \end{itemize}
