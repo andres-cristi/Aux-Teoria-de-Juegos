@@ -1,0 +1,240 @@
+\documentclass[11pt, spanish]{article}
+\pagestyle{empty}
+
+%acentos de la forma � en vez de \'a
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+%Enumeración con columnas que se usa con \begin{multicols}{2} \begin{enumerate}
+\usepackage{multicol}
+\usepackage{multirow}
+
+
+%Para poder usar begin comment
+\usepackage{verbatim}
+
+%Teoremas
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+
+
+%letras para enumerar
+\makeatletter\renewcommand\theenumi{\@alph\c@enumi}\makeatother\renewcommand\labelenumi{\theenumi)}
+
+%m�rgenes
+\usepackage[left=2cm, top=2cm, right=2cm, headheight=13.6pt]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumerate}
+
+%conjuntos N, Q, R, Z, C
+\usepackage{dsfont}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Pol}{\mathcal{P}}
+
+%Transformada de Laplace
+\renewcommand{\L}{\mathcal{L}}
+
+%Probabilidades
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Var}{\mathbb{V}\text{ar}}
+
+%l�gica
+\newcommand{\ssi}{\Leftrightarrow}
+
+%funciones
+\newcommand{\function}[5]{  \begin{array}{rl}
+                                #1: #2 &\longrightarrow #3 \\
+                                #4 & \longmapsto #1\left(#4\right)= #5
+                            \end{array} }
+
+\newcommand{\funcion}[3]{#1: #2 \longrightarrow #3 }
+\newcommand{\parteentera}[1]{[#1]}
+
+%%%operadores matematicos
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\tr}{\text{tr}}
+
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+% % % % % % % % % %
+%\providecommand{\abs}[1]{\lvert#1 \rvert}
+%\providecommand{\norm}[1]{\lVert#1 \rVert}
+%\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm, amsfonts}
+
+%Im�genes
+\usepackage{graphicx}
+\usepackage{float}
+\begin{document}
+\fancyhead[L]{Facultad de Ciencias Físicas y Matemáticas}
+\fancyhead[R]{Universidad de Chile}
+
+\begin{flushleft}
+  \textbf{IN6228 - Teor\'ia de Juegos}
+  \\\textbf{Profesor:} Jos\'e Correa.
+  \\\textbf{Auxiliares:} Carlos Bonet, Andr\'es Cristi.
+\end{flushleft}
+
+
+\begin{center}
+  \Large{\textbf{Tarea 2}}
+\end{center}
+
+%\begin{flushleft}
+
+
+
+\begin{itemize}
+  \item[\textbf{P1.}] \textbf{Remate casi óptimo.}
+
+Suponga que debe rematar un ítem (que usted valora
+en 0) entre $n$ agentes
+con valoraciones no negativas, independientes y regulares pero no idénticamente
+distribuidas. Como el remate
+de Myerson puede ser bastante complicado en este caso, se le propone
+el siguiente mecanismo más simple:
+\begin{itemize}
+    \item Eliminar a todos los agentes con $c_i(v_i)<0$.
+    \item Asignar el ítem al agente con mayor valoración entre los que quedan.
+\end{itemize}
+donde $c_i(v_i)= v_i - \frac{1-F_i(v_i)}{f_i(v_i)}$ es la valoración virtual del agente $i$.
+Compararemos este mecanismo con el remate óptimo (de Myerson).
+\begin{enumerate}
+    \item Determine los pagos para que el mecanismo propuesto sea compatible en incentivos.
+    \item Muestre que si en uno de los mecanismos nadie gana el ítem, entonces en el otro tampoco.
+    \item Denotemos por $I$ al ganador en el mecanismo
+    óptimo y por $J$ al ganador del propuesto, iguales a $0$ si
+    nadie gana.  Pruebe que
+    \begin{align}
+      \E(c_I(v_I) | I=J)\cdot \PP(I=J) \leq \E(c_J(v_J)) \label{eq1}
+    \end{align}
+    
+    \item Use el hecho de que para todo $i$,
+    $c_i(v_i) \leq v_i$ para probar que 
+    \begin{align}
+      \E( c_I(v_I) | I\neq J) \cdot \PP(I\neq J )\leq \E(\bar{p}_J ) \label{eq2}
+    \end{align}
+    donde $\bar{p}_i$ es el pago del agente $i$
+    bajo el mecanismo propuesto.
+    
+  \item Use las ecuaciones (\ref{eq1}) y (\ref{eq2}) para concluir que la ganancia esperada bajo el mecanismo
+    óptimo es a lo más el doble de la ganancia esperada
+    del mecanismo
+    propuesto.
+\end{enumerate}
+
+
+  \item[\textbf{P2.}] {\bf Elección Social.}
+  
+Suponga que los candidatos en una elecci\'on se representan por
+elementos de $\R$, i.e.\ los candidatos son un conjunto finito $A
+\subseteq \R$. En esta elecci\'on cada votante $i\in N$ tiene un
+candidato favorito $p_i\in A$ y prefiere $p'\in A$ por sobre $p''\in
+A$ (denotado por $p' \succ_i p''$) si $p''<p'\le p_i$ o bien
+$p''>p'\ge p_i$ (si ninguna de estas condiciones se cumple entonces
+cualquier preferencia es posible).
+
+\begin{enumerate}
+\item Interprete esta condición. ¿Qué situación razonable de elección
+modela esto?
+\item Suponga que hay un número impar de votantes. Muestre que la
+mediana de los $\{p_i\}_{i \in {N}}$ es siempre un ganador de
+Condorcet.
+\item Considere el sistema que, dados los rankings de todos los
+votantes encuentra la mediana de los favoritos declarados de cada uno.
+>Es efectivo que, independiente de lo que declaren el resto de los
+votantes, a un votante en particular no le conviene mentir en su
+ranking?
+\item Compare su respuesta con el teorema de Gibbard-Satterthwaite.
+\item Considere la siguiente versión del sistema de \emph{approval
+voting}. El votante $i\in N$ vota por todos los candidatos $p\in A$
+tales que $|{p-p_i}| \le 1$. El sistema luego elige al candidato mas
+votado. Muestre un ejemplo en donde el \'unico ganador con este
+sistema no resulta ser ganador de Condorcet.
+\end{enumerate}
+
+  \item[\textbf{P3.}] {\bf Licitaci\'on de Abastecimiento.} 
+  
+  Considere una empresa con 2 plantas, $A$ y $B$,
+que debe comprar 1 unidad de insumo para cada planta. Existen $n$
+proveedores, y el proveedor $i$ tiene un costo marginal de
+producci\'on $c_i$. Adem\'as, existe un costo de transporte (conocido)
+$d_{ij}$ por llevar una unidad de insumo del  proveedor $i$ a la
+planta $j$. \'Este costo lo paga la empresa.
+
+
+\begin{enumerate}
+\item Encuentre el mecanismo con Pivote de Clarke que alcanza la
+eficiencia (en este caso, eficiencia corresponde a la minimizaci\'on
+de costo total).
+\item Ahora consideramos el caso en que la empresa está interesada en minimizar el costo
+total esperado a pagar. Para esto, suponga que el costo $c_i$ est\'a
+distribuido de acuerdo a $F_i$ en el intervalo
+$C=[\underline{c},\bar{c}]$. Un mecanismo estar\'a dado por funciones
+de asignaci\'on $x_{iA}:C^n\rightarrow \mathbb{R}$,
+$x_{iB}:C^n\rightarrow \mathbb{R}$ y pagos $t:C^n\rightarrow \mathbb{R}^n$.
+    \begin{enumerate}
+
+    \item Escriba la funci\'on $U_i(c_i,c_i')$ que representa la
+utilidad del proveedor $i$ si su verdadero costo es $c_i$ pero declara un
+costo $c_i'$, en t\'erminos de $x_{iA}, x_{iB}$ y $t_i$.
+
+    \item Escriba el problema de maximizaci\'on que debe resolver la empresa
+
+    \item Muestre que $V_i(c_i)= \max_{c_i'\in [\underline{c},\bar{c}]} U_i(c_i,c_i')$ es
+      una función convexa y luego pruebe que si un mecanismo es compatible en incentivos
+entonces 
+\[ R_i(c_i) := E_{c_{-i}}[x_{iA}(c_i,c_{-i})+x_{iB}(c_i,c_{-i})]
+\]
+es no-creciente en $c_i$ y
+$V_i(c_i)=V_i(\bar{c})-\int\limits_{c_i}^{\bar{c}}R_i(s)ds$.
+
+    \item Reescriba la funci\'on objetivo de la empresa de forma que
+sea s\'olo funci\'on de $x_{iA}$ y $x_{iB}$.
+
+    \item Encuentre el mecanismo \'optimo (puede asumir propiedades
+necesarias sobre $F_i$).
+
+    \end{enumerate}
+\end{enumerate}
+  
+  \item[\textbf{P4.}] {\bf Remate de dos Bienes.} 
+  
+  Dos bienes indistinguibles serán rematados entre $n$ agentes cuya valoración por el bien sigue una distribución $F$ y son independientes. Cada agente desea obtener solo uno de los bienes, es decir, nunca se asigna dos veces al mismo comprador. En este contexto:
+ \begin{enumerate} 
+     \item Describa la asignación y los pagos de un mecanismo VCG.
+     \item Pruebe que sigue siendo válido el teorema de equivalencia de ingresos.
+     \item Asumiendo $F$ regular, encuentre la regla de asignación para un remate de Myerson.
+     \item Mecanismo de posted price: formule una expresión para encontrar el mejor precio fijo (el precio que maximiza la utilidad del martillero cuando su estrategia es cobrar el mismo precio a todos los clientes interesados).
+     \item Calcule el ingreso del martillero en las partes \textbf{a)}, \textbf{c)} y \textbf{d)} cuando $n=3$ y $F\sim U[0,1]$.
+\end{enumerate}
+ 
+
+\end{itemize}
+
+\end{document} 
