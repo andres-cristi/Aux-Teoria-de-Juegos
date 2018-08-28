@@ -1,0 +1,149 @@
+\documentclass[11pt, spanish]{article}
+\pagestyle{empty}
+
+%acentos de la forma � en vez de \'a
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+%Enumeración con columnas que se usa con \begin{multicols}{2} \begin{enumerate}
+\usepackage{multicol}
+\usepackage{multirow}
+
+
+%Para poder usar begin comment
+\usepackage{verbatim}
+
+%Teoremas
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+
+
+%letras para enumerar
+\makeatletter\renewcommand\theenumi{\@alph\c@enumi}\makeatother\renewcommand\labelenumi{\theenumi)}
+
+%m�rgenes
+\usepackage[left=2cm,top=2cm,right=2cm]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumerate}
+
+%conjuntos N, Q, R, Z, C
+\usepackage{dsfont}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Pol}{\mathcal{P}}
+
+%Transformada de Laplace
+\renewcommand{\L}{\mathcal{L}}
+
+%Probabilidades
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Var}{\mathbb{V}\text{ar}}
+
+%l�gica
+\newcommand{\ssi}{\Leftrightarrow}
+
+%funciones
+\newcommand{\function}[5]{  \begin{array}{rl}
+                                #1: #2 &\longrightarrow #3 \\
+                                #4 & \longmapsto #1\left(#4\right)= #5
+                            \end{array} }
+
+\newcommand{\funcion}[3]{#1: #2 \longrightarrow #3 }
+\newcommand{\parteentera}[1]{[#1]}
+
+%%%operadores matematicos
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\tr}{\text{tr}}
+
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+% % % % % % % % % %
+%\providecommand{\abs}[1]{\lvert#1 \rvert}
+%\providecommand{\norm}[1]{\lVert#1 \rVert}
+%\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm, amsfonts}
+
+\newcommand{\vsucc}[0]{\vec{\succ}}
+
+
+%Im�genes
+\usepackage{graphicx}
+\usepackage{float}
+\begin{document}
+\fancyhead[L]{Facultad de Ciencias Físicas y Matemáticas}
+\fancyhead[R]{Universidad de Chile}
+
+\begin{flushleft}
+  \textbf{IN6228-1 Teoría de Juegos 2018}
+  \\\textbf{Profesor:} José Correa.
+  \\\textbf{Auxiliares:} Carlos Bonet y Andrés Cristi.
+\end{flushleft}
+
+
+\begin{center}
+  \large{\textbf{Clase Auxiliar 8\\ 24 de Agosto de 2018}}
+\end{center}
+
+%\begin{flushleft}
+
+
+
+\begin{itemize}
+\item[\textbf{P1.}] \textbf{Teorema de Gibbard-Satterthwaite}
+
+Una función de elección social $F$ es a prueba de estrategias si $\forall \vsucc, \vsucc', i$ se 
+cumple que $F(\succ_i,\succ_{-i}) \succeq_i F(\succ'_i, \succ_{-i})$. En este problema mostraremos el siguiente teorema
+\begin{teo}
+Si una función de elección social  $F$ sobre al menos tres opciones es sobreyectiva y a prueba de estrategias, entonces es dictatorial.
+\end{teo}
+\begin{enumerate}
+    \item Pruebe que si $F$ es a prueba de estrategias, entonces es monótona (M), i.e. 
+    si $F(\vsucc)=a$ y en $\vsucc', a$ está tan bien o mejor que en $\vsucc$
+    ($a\succ_i b \Rightarrow a\succ'_i b, \forall i$), entonces
+    $F(\vsucc')=a$.
+    \item Pruebe que si $F$ es sobreyectiva y monótona, entonces es débilmente pareto
+    eficiente (DP): si $\forall i, a\succ_i b$, entonces $F(\vsucc)\neq b$.
+    \item Construya la
+    función de preferencia social $R$ como sigue: dado $\vsucc$, $F(\vsucc)$ es
+    el primero en $R(\vsucc)$; luego se construye $\vsucc^{(2)}$ moviendo a
+    $F(\vsucc)$ al final de todas las preferencias y se toma a $F(\vsucc^{(2)})$
+    como el segundo en $R(\vsucc)$; y así sucesivamente. Pruebe que si $F$ es (DP) 
+    entonces $R$ está bien definida.
+    \item Pruebe que si $F$ es (DP) entonces $R$ es unánime.
+    \item Pruebe que si $F$ es (M) entonces cumple IIA y concluya.
+\end{enumerate}
+	
+	\item[\textbf{P2.}] \textbf{Bien Público}
+	
+	En un pueblo el municipio está considerando construir una plaza. El valor
+	de construcción es $c>1$. En el pueblo viven $n$ personas, cada una con
+	valoración $t_i\in [0,1]$ (estaría dispuestx a pagar $t_i$). Diseñe un
+	mecanismo VCG para encontrar la decisión socialmente óptima. Qué pasa
+	con los pagos? Es cubierto el costo de la plaza o hay que usar dinero municipal?
+
+\end{itemize}
+\end{document} 
